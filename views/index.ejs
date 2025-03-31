@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Stacle Studios Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Basic SEO -->
+  <meta name="description" content="A blog about programming, web dev, and more.">
+  <meta name="keywords" content="Node.js, Programming, Web Development, JavaScript, stacle studios">
+  <meta name="author" content="Saksham">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+
+  <div class="container">
+    <h1>All Blog Posts</h1>
+
+    <!-- Instant Search Form (no button) -->
+    <div class="search-form">
+      <input type="text" id="searchInput" placeholder="Search blogs..." autocomplete="off">
+    </div>
+
+    <div class="posts-grid" id="postsGrid">
+      <% posts.forEach(post => { %>
+        <div class="post-card">
+          <h2><%= post.title %></h2>
+          <p class="category"><%= post.category %></p>
+          <p class="description"><%= post.description %></p>
+          <% if (post.tags && post.tags.length) { %>
+            <ul class="tags">
+              <% post.tags.forEach(tag => { %>
+                <li><%= tag %></li>
+              <% }) %>
+            </ul>
+          <% } %>
+          <!-- Updated link: using /posts/ -->
+          <a href="/posts/<%= post.id %>" class="read-more">Read More</a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <%- include('partials/footer.ejs') %>
+
+  <!-- Instant Search Script -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const postsGrid = document.getElementById('postsGrid');
+
+    function createPostCard(post) {
+      let tagsHtml = '';
+      if(post.tags && post.tags.length) {
+        tagsHtml = '<ul class="tags">' + post.tags.map(tag => `<li>${tag}</li>`).join('') + '</ul>';
+      }
+      return `
+        <div class="post-card">
+          <h2>${post.title}</h2>
+          <p class="category">${post.category}</p>
+          <p class="description">${post.description}</p>
+          ${tagsHtml}
+          <a href="/posts/${post.id}" class="read-more">Read More</a>
+        </div>
+      `;
+    }
+
+    searchInput.addEventListener('input', async function() {
+      const query = this.value;
+      try {
+        const res = await fetch('/api/search?q=' + encodeURIComponent(query));
+        const posts = await res.json();
+        postsGrid.innerHTML = posts.map(createPostCard).join('');
+      } catch (error) {
+        console.error('Search error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

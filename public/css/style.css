@@ -1,0 +1,147 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Merriweather', serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Header */
+.main-header {
+  background: #222;
+  color: #fff;
+  padding: 10px 0;
+}
+.main-header nav {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.main-header .brand {
+  font-weight: bold;
+  margin-right: auto;
+  font-size: 1.2rem;
+}
+.main-header a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.main-header a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  flex: 1;
+}
+
+/* Footer */
+.main-footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+/* Posts Grid */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.post-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.post-card:hover {
+  transform: translateY(-5px);
+}
+.post-card h2 {
+  margin-top: 0;
+}
+.post-card .category {
+  color: #777;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.post-card .description {
+  margin-bottom: 10px;
+}
+
+/* Read More Button */
+.read-more {
+  display: inline-block;
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.read-more:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+/* Tags */
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tags li {
+  background: #e0e0e0;
+  padding: 6px 12px;
+  border-radius: 20px; /* rectangular with rounded edges */
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* Search Form */
+.search-form {
+  margin: 20px 0;
+}
+.search-form input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .main-header nav {
+    justify-content: center;
+  }
+  .main-header .brand {
+    margin-bottom: 10px;
+  }
+}

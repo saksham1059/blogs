@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Wild Ride of Hacking Pizza Wings: Glitches, Free Pizza & a Job Offer!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Basic SEO -->
+  <meta name="description" content="A hilarious tale of hacking pizza wings for free pizza, discovering wild glitches, and landing a job opportunity.">
+  <meta name="keywords" content="hacking, pizza wings, free pizza, glitches, job opportunity, funny blog">
+  <meta name="author" content="Saksham">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Additional styling for blog post content */
+    .blog-post {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+    .blog-post h1, .blog-post h2 {
+      color: #222;
+      font-weight: 700;
+    }
+    .reading-time {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .blog-post img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .credit-links a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .credit-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+  
+  <article class="blog-post">
+    <!-- Reading time indicator -->
+    <p class="reading-time">⏱️ Reading Time: 6 minutes</p>
+    
+    <h1>The Wild Ride of Hacking Pizza Wings: Glitches, Free Pizza & a Job Offer!</h1>
+    
+    <p>
+      So, here's the absurd truth of how I, a self-proclaimed silly cat 😹, ended up hacking Pizza Wings—and inadvertently scoring a job opportunity (yes, you read that right)! Buckle up, because this ride is packed with wild glitches, free pizza 🍕, and more than a few laughs 😂.
+    </p>
+    
+    <h2>The Offer That Sparked It All</h2>
+    <p>
+      It all started when I noticed that the Pizza Wings app had an offer: buy one pizza on Sunday and get two free! (Note: this offer no longer exists—but the date-changing trick still worked like magic.) One fine Wednesday, hunger struck, and I thought, "Why not?" So, I changed my phone’s date to Sunday and bam—offer activated! That’s when I got curious about just how messed up Pizza Wings’ security really was.
+    </p>
+    
+    <h2>A Series of Unbelievable Glitches</h2>
+    <p>
+      In my mischief mode, I turned off my internet and, to my surprise, an error popped up revealing a leaked backend URL: <code>pizzawings.co.in:3000</code>. If you visited that link (back in the day), it even welcomed hackers like us with a cheeky message. And here’s the kicker: I discovered a glitch where, when offline, you could snag two specific pizzas for absolutely zero rupees 🤯.
+    </p>
+    
+    <h2>Teamwork Makes the Dream Work</h2>
+    <p>
+      My cousin Aarav dropped by one day and mentioned that you can track HTTP GET and POST requests using the power of "Inspect Element." Intrigued (and a little mischievous), I tried it out and found a way to grab someone's Pizza Wings details by simply sending a GET request to:
+    </p>
+    <pre>
+https://pizzawings.co.in:3000/user/getUserFullDetailById/272
+    </pre>
+    <p>
+      With that, I could extract addresses, OTPs, and more. (Don't worry—they patched it later!)
+    </p>
+    
+    <h2>The Bot That Brought the Feast</h2>
+    <p>
+      Fueled by excitement, I built a Python bot that scraped every single person’s details (from IDs 1 to 500k) and dumped them into an Excel file. Yes, an Excel file! I even joked that if anyone wanted to buy the data, they should contact me with their price—just kidding (or am I? 😉).
+    </p>
+    
+    <h2>The Job Offer & A Hilarious Meme</h2>
+    <p>
+      I eventually contacted Pizza Wings about these bugs, but got nothing in return. Then, by some wild twist of fate, I ended up chatting with a Pizza Wings manager. After I spilled the beans on everything, he asked if I wanted to work with them. I said, "Sure—right after my 10th class boards!" 📚 And here's where the universe threw in a little bonus laugh:
+    </p>
+    
+    <!-- Pizza Wings Meme inserted after the job offer section -->
+    <img src="https://cdn.discordapp.com/attachments/1292447964811366480/1356249582123614288/WhatsApp_Image_2025-03-31_at_18.20.42_fc204e85.jpg?ex=67ebe15a&is=67ea8fda&hm=47b4920dc212285a0578415cda9715fde7034aafe80d0314bc8a7dcb1422fc63" alt="Pizza Wings Meme">
+    
+    <h2>The Not-So-Free Pizza & Payment Shenanigans</h2>
+    <p>
+      After my epic free pizza moment (which wasn’t completely free—I ended up paying a measly 3₹ online with no refund), I dived into their payment system and discovered their Razorpay API. I even initiated refunds for myself and helped some desperate Instagram folks who were begging for their money back. Pizza Wings was deleting angry comments, so I stepped in to fix things!
+    </p>
+    
+    <h2>Final Thoughts</h2>
+    <p>
+      This is just 40% of all my findings—trust me, the rest is top secret! Shout out to my buddies for having my back:
+    </p>
+    <p class="credit-links">
+      Thanks to <a href="https://aaravmain.org/" target="_blank">aarav</a>, 
+      <a href="https://sambhavarora.in/" target="_blank">sambhav arora</a>, and 
+      <a href="https://lepichudoes.deno.dev/" target="_blank">lepichu</a> for helping me in my journey coz I am an introvert, these guys helped me to say what to reply to them.
+    </p>
+    
+    <p>
+      Stay tuned for more misadventures from this introverted hacker who just wanted free pizza and ended up with a wild story to tell! 🍕😂
+    </p>
+  </article>
+  
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>
