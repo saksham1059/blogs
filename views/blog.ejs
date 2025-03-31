@@ -31,6 +31,12 @@
       color: #555;
       margin-bottom: 20px;
     }
+    .blog-post pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
     .blog-post img {
       max-width: 100%;
       height: auto;
@@ -45,14 +51,30 @@
     .credit-links a:hover {
       text-decoration: underline;
     }
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      .blog-post {
+        margin: 10px;
+        padding: 15px;
+      }
+      .blog-post h1 {
+        font-size: 1.5rem;
+      }
+      .blog-post h2 {
+        font-size: 1.2rem;
+      }
+      .reading-time {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
   <%- include('partials/header.ejs') %>
   
   <article class="blog-post">
-    <!-- Reading time indicator -->
-    <p class="reading-time">⏱️ Reading Time: 6 minutes</p>
+    <!-- Reading time indicator updated to 8 minutes -->
+    <p class="reading-time">⏱️ Reading Time: 8 minutes</p>
     
     <h1>The Wild Ride of Hacking Pizza Wings: Glitches, Free Pizza & a Job Offer!</h1>
     
@@ -62,53 +84,83 @@
     
     <h2>The Offer That Sparked It All</h2>
     <p>
-      It all started when I noticed that the Pizza Wings app had an offer: buy one pizza on Sunday and get two free! (Note: this offer no longer exists—but the date-changing trick still worked like magic.) One fine Wednesday, hunger struck, and I thought, "Why not?" So, I changed my phone’s date to Sunday and bam—offer activated! That’s when I got curious about just how messed up Pizza Wings’ security really was.
+      One day, I noticed on the Pizza Wings app an offer: buy one pizza on Sunday and get two free! (Note: this offer no longer exists—but the date-changing trick still works.) Then, on a random Wednesday, I got hungry and thought, "Hey, why not try it?" Being a silly cat, I changed my phone’s date to Sunday and—bam!—the offer worked like magic.
     </p>
     
-    <h2>A Series of Unbelievable Glitches</h2>
+    <h2>Curiosity Killed the Security</h2>
     <p>
-      In my mischief mode, I turned off my internet and, to my surprise, an error popped up revealing a leaked backend URL: <code>pizzawings.co.in:3000</code>. If you visited that link (back in the day), it even welcomed hackers like us with a cheeky message. And here’s the kicker: I discovered a glitch where, when offline, you could snag two specific pizzas for absolutely zero rupees 🤯.
+      That little trick made me wonder: just how messed up is Pizza Wings’ security? So, I went back to their app, turned off my internet, and—surprise!—an error popped up that leaked a backend URL: <code>pizzawings.co.in:3000</code>. If you visit that link (back in the day), it even welcomed hackers like us with a cheeky “hack us” vibe. Oh, and I found a glitch where, when offline, you could snag two specific pizzas for 0₹. LMAO!
     </p>
     
     <h2>Teamwork Makes the Dream Work</h2>
     <p>
-      My cousin <a href="https://aaravmain.org/" target="_blank">aarav</a>,  dropped by one day and mentioned that you can track HTTP GET and POST requests using the power of "Inspect Element." Intrigued (and a little mischievous), I tried it out and found a way to grab someone's Pizza Wings details by simply sending a GET request to:
+      Then, my cousin <a href="https://aaravmain.org/" target="_blank">aarav</a> dropped by and told me, "You can track HTTP GET and POST requests using the power of Inspect Element." Intrigued (and a little mischievous), I tried it and discovered a way to grab someone's Pizza Wings details. By sending a GET request to:
     </p>
     <pre>
 https://pizzawings.co.in:3000/user/getUserFullDetailById/272
     </pre>
     <p>
-      With that, I could extract addresses, OTPs, and more. (Don't worry—they patched it later!)
+      I could fetch addresses, OTPs, and a bunch of other info. (Don't worry—they patched this glitch later!)
     </p>
     
-    <h2>The Bot That was fucking thier database</h2>
+    <h2>I Found Their Google Maps API Key</h2>
+    <p>
+      And just when I thought things couldn't get crazier, I found their Google Maps API key still open: <code>AIzaSyDBy_ieIzByu1uYgW1FEaM5vXUW9QeYal4</code>. Anyone can use it! When I told Pizza Wings about this, they were taking it way too easy. This isn’t just a bug—it's a full-blown security nightmare, and trust me, it's a little sweet revenge.
+    </p>
+    
+    <h2>The Bot That Was Fucking Their Database</h2>
     <p>
       Fueled by excitement, I built a Python bot that scraped every single person’s details (from IDs 1 to 500k) and dumped them into an Excel file. Yes, an Excel file! I even joked that if anyone wanted to buy the data, they should contact me with their price—just kidding (or am I? 😉).
     </p>
     
+    <h2>The Loyalty Points Glitch</h2>
+    <p>
+      Then came the greatest glitch of all time: loyalty points. Pizza Wings had a reward system where you could only use 25% of your loyalty points. Imagine ordering for 100₹, having 500 points, but only getting a 25₹ discount! I found a glitch to use all my loyalty points without deducting any, which meant I could get the entire order for free. I ordered 25 pizzas and 10 coldrinks with this glitch—and even roped in my closest Pizza Wings outlet delivery partner to join me. Epic, right?
+    </p>
+    
+    <h2>The Ban and the Unban</h2>
+    <p>
+      Naturally, Pizza Wings banned my account... but fuck Pizza Wings—I unbanned myself like a boss! 😂 Then, I started creating a reel so that they’d get in contact, but nothing happened.
+    </p>
+    
+    <h2>Phone Numbers and the Great Switcheroo</h2>
+    <p>
+      Next, I thought the Excel file must have the devs’ phone numbers. I fed it to ChatGPT and, lo and behold, got 5-6 phone numbers. I texted them, but only one replied. He claimed he wasn’t from Pizza Wings. Later, I contacted my delivery partner (who was in my team) and he gave me the phone number of a Pizza Wings manager. After talking to him, the guy who previously said he wasn’t from Pizza Wings texted me back saying he was actually from there. LMAO!
+    </p>
+    
     <h2>The Job Offer</h2>
     <p>
-      I eventually contacted Pizza Wings about these bugs, but got nothing in return. Then, by some wild twist of fate, I ended up chatting with a Pizza Wings manager. After I spilled the beans on everything, he asked if I wanted to work with them. I said, "Sure—right after my 10th class boards!" 📚 And here's where the universe threw in a little bonus laugh:
+      I eventually contacted Pizza Wings about these bugs, but got nothing in return. Then, by some wild twist of fate, I ended up chatting with a Pizza Wings manager. After I spilled the beans on everything, he asked if I wanted to work with them. I said, "Sure—right after my 10th class boards!" 📚
     </p>
     
     <!-- Pizza Wings Meme inserted after the job offer section -->
     <img src="https://cdn.discordapp.com/attachments/1292447964811366480/1356249582123614288/WhatsApp_Image_2025-03-31_at_18.20.42_fc204e85.jpg?ex=67ebe15a&is=67ea8fda&hm=47b4920dc212285a0578415cda9715fde7034aafe80d0314bc8a7dcb1422fc63" alt="Pizza Wings Meme">
     
-    <h2>The Not-So-Free Pizza & Payment nigger stuff</h2>
+    <h2>The Not-So-Free Pizza & Payment Mishaps</h2>
     <p>
-      After my epic free pizza moment (which wasn’t completely free—I ended up paying a measly 3₹ online with no refund), I dived into their payment system and discovered their Razorpay API. I even initiated refunds for myself and helped some desperate Instagram folks who were begging for their money back. Pizza Wings was deleting angry comments, so I stepped in to fix things!
+      After that, I went home and tracked how payments worked. I discovered their Razorpay paywall API and even initiated a refund for myself. I still have their Razorpay API—and I helped three people from Instagram get refunds when their orders were deducted but never placed. Pizza Wings was deleting their comments and not initiating chargebacks, so I took matters into my own hands and made them happy.
+    </p>
+    
+    <h2>The Admin Panel</h2>
+    <p>
+      By the way, Pizza Wings’ admin panel is at: <a href="https://stgadmin.pizzawings.co.in/#/login" target="_blank">https://stgadmin.pizzawings.co.in/#/login</a>  
+      (I don’t know the login credentials, but if you guys find them, contact me!)
+    </p>
+    
+    <h2>Confidential Findings</h2>
+    <p>
+      This is literally 40% of my findings—the rest are confidential.
     </p>
     
     <h2>Final Thoughts</h2>
     <p>
-      This is just 40% of all my findings—trust me, the rest is top secret! Shout out to my buddies for having my back:
+      Shout out to my buddies for having my back:
     </p>
     <p class="credit-links">
       Thanks to <a href="https://aaravmain.org/" target="_blank">aarav</a>, 
       <a href="https://sambhavarora.in/" target="_blank">sambhav arora</a>, and 
-      <a href="https://lepichudoes.deno.dev/" target="_blank">lepichu</a> for helping me in my journey coz I am an introvert, these guys helped me to say what to reply to them.
+      <a href="https://lepichudoes.deno.dev/" target="_blank">lepichu</a> for helping me in my journey coz I am an introvert—these guys helped me to say what to reply to them.
     </p>
-    
     <p>
       Stay tuned for more misadventures from this introverted hacker who just wanted free pizza and ended up with a wild story to tell! 🍕😂
     </p>
