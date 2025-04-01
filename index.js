@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8888;
 
 // Serve static files (CSS, images, etc.)
 app.use(express.static('public'));
@@ -12,10 +12,10 @@ app.set('view engine', 'ejs');
 const blogPosts = [
   {
     id: 1,
-    title: "The Wild Ride of Hacking Pizza Wings: Glitches, Free Pizza & a Job Offer!",
-    category: "Hacking & Humor",
-    description: "A wild adventure hacking Pizza Wings, exploiting glitches, and landing an unexpected job offer.",
-    tags: ["Hacking", "Pizza", "Glitches", "Humor"]
+    title: "How to make a free movies website:- an orange cat guide",
+    category: "Piracy and streaming",
+    description: "In this blog, i will tell you how you can make your own movies site",
+    tags: ["Piracy", "Coding", "proxies", "Humor"]
   },
   // Additional posts can be added here
 ];
